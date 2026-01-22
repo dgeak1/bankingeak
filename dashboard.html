@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EAK | Private Executive Suite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #020617; color: #f8fafc; overflow-x: hidden; }
+        .glass-panel { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); }
+        
+        /* 3-Second Loading Sequence */
+        #loader {
+            position: fixed; inset: 0; z-index: 100; background: #020617;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 0.8s ease-in-out;
+        }
+        .progress-bar { width: 240px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; }
+        .progress-fill { width: 0%; height: 100%; background: #fbbf24; transition: width 3s linear; }
+        
+        .gold-glow { text-shadow: 0 0 20px rgba(251, 191, 36, 0.3); }
+        #content { transition: opacity 1s ease-in-out; }
+        @keyframes border-pulse {
+    0% { border-color: rgba(239, 68, 68, 0.5); }
+    50% { border-color: rgba(239, 68, 68, 1); box-shadow: 0 0 40px rgba(239, 68, 68, 0.6); }
+    100% { border-color: rgba(239, 68, 68, 0.5); }
+}
+
+.security-pulse {
+    animation: border-pulse 0.5s infinite;
+}
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <div class="text-3xl font-black mb-8 tracking-tighter animate-pulse text-white">EAK<span class="text-amber-500">.</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="fill"></div></div>
+        <p class="text-[9px] uppercase tracking-[0.5em] mt-6 text-slate-500 font-bold">Authenticating encrypted link...</p>
+    </div>
+
+    <main id="content" class="opacity-0 max-w-5xl mx-auto p-6 pt-24">
+        
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <p class="text-amber-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-2">Executive Access</p>
+                <h1 class="text-4xl font-extrabold tracking-tight">System <span class="text-slate-500 font-light italic">Overview</span></h1>
+            </div>
+            <button onclick="window.location.href = 'index.html'" class="text-[10px] font-bold border border-white/10 px-6 py-2 rounded-full hover:bg-red-500 hover:border-red-500 transition-all uppercase tracking-widest">Kill Session</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="glass-panel p-10 rounded-[40px] border-l-4 border-l-amber-500">
+                <div class="w-16 h-16 bg-slate-800 rounded-2xl mb-8 flex items-center justify-center border border-white/10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                
+                <h2 id="prof-name" class="text-xl font-bold text-white mb-1 uppercase tracking-tight">Loading...</h2>
+                <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-10">Verified User</p>
+                
+                <div class="space-y-6 pt-8 border-t border-white/5">
+                    <div>
+                        <p class="text-[9px] text-slate-500 uppercase font-black tracking-widest mb-1">Username</p>
+                        <p id="prof-user" class="text-sm font-medium text-slate-200 tracking-wide"> @user_eak </p>
+                    </div>
+                    <div>
+                        <p class="text-[9px] text-slate-500 uppercase font-black tracking-widest mb-1"> email</p>
+                        <p id="prof-phone" class="text-sm font-medium text-slate-200 tracking-wide">dolpgrace@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 space-y-8">
+                
+                <div class="glass-panel p-12 rounded-[50px] bg-gradient-to-br from-slate-900 to-black relative overflow-hidden">
+                    <div class="flex justify-between items-start relative z-10">
+                        <div>
+                            <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4">Available Balance </p>
+                            <h3 id="balance-val" class="text-6xl font-black tracking-tighter gold-glow transition-all duration-500">$0.00</h3>
+                        </div>
+                        <button onclick="togglePrivacy()" class="bg-white/5 p-4 rounded-2xl hover:bg-white/10 transition-all border border-white/5">
+                            <svg id="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="mt-12 flex gap-4 relative z-10">
+                        <button onclick="withdrawAction()" class="flex-1 bg-white text-black py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] hover:bg-amber-500 transition-all">Withdraw Capital</button>
+                        <button class="flex-1 bg-white/5 border border-white/10 py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] hover:bg-white/10 transition-all">Transfers</button>
+                    </div>
+                    
+                    <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-amber-500/5 blur-[80px] rounded-full"></div>
+                </div>
+
+                <div class="glass-panel p-10 rounded-[40px]">
+                    <p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-8">Verified Transactions</p>
+                    <div id="dashboard-tx-list" class="space-y-4">
+                        </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="transfer-overlay" class="hidden fixed inset-0 bg-black/90 z-[200] flex items-center justify-center p-6 backdrop-blur-md">
+    <div class="glass-panel border-emerald-500/50 border-2 p-10 max-w-xl w-full text-center rounded-[40px] shadow-[0_0_100px_rgba(16,185,129,0.2)]">
+        
+        <div class="w-20 h-20 bg-emerald-500/20 border-2 border-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="#10b981" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+        </div>
+
+        <h2 class="text-3xl font-black text-white mb-4 uppercase tracking-tighter">TRANSFER INITIALIZED</h2>
+        
+        <p class="text-slate-400 text-sm leading-relaxed mb-8">
+            The external transfer request has been logged. To finalize this transaction and enable outbound liquidity, you must first <span class="text-emerald-400 font-bold">complete the primary withdrawal verification process</span>.
+        </p>
+
+        <div class="bg-emerald-500/10 border border-emerald-500/20 p-4 rounded-2xl mb-8">
+            <p class="text-emerald-500 text-[10px] font-black uppercase tracking-[0.2em]"> Status: Awaiting Activation</p>
+        </div>
+
+        <button onclick="closeTransfer()" class="w-full py-4 rounded-2xl bg-white text-black font-black uppercase text-xs tracking-widest hover:bg-emerald-500 hover:text-white transition-all">Return to Vault</button>
+    </div>
+</div>
+    </main>
+
+
+    <div id="security-overlay" class="hidden fixed inset-0 bg-black/90 z-[200] flex items-center justify-center p-6 backdrop-blur-md">
+    <div class="glass-panel border-red-500/50 border-2 p-10 max-w-xl w-full text-center rounded-[40px] shadow-[0_0_100px_rgba(239,68,68,0.2)]">
+        <div class="w-20 h-20 bg-red-500/20 border-2 border-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="#ef4444" stroke-width="3" viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 17c-.77 1.333.192 3 1.732 3z"/></svg>
+        </div>
+        <h2 class="text-3xl font-black text-white mb-4 uppercase tracking-tighter"> FUNDS NOT YET CLEARED </h2>
+        <p class="text-slate-400 text-sm leading-relaxed mb-8">
+            The requested capital is currently held in the <span class="text-white font-bold"> EAK Global Liquidity Pool </span>. Your account requires a mandatory verification period for institutional transfers. 
+        </p>
+        <div class="bg-red-500/10 border border-red-500/20 p-4 rounded-2xl mb-8">
+            <p class="text-red-500 text-[10px] font-black uppercase tracking-[0.2em]"> Contact EAK for verification completion </p>
+        </div>
+        <button onclick="closeAlert()" class="w-full py-4 rounded-2xl bg-white text-black font-black uppercase text-xs tracking-widest hover:bg-red-500 hover:text-white transition-all"> Acknowledge </button>
+    </div>
+</div>
+
+<div id="security-overlay" class="hidden fixed inset-0 bg-black/90 z-[200] flex items-center justify-center p-6 backdrop-blur-md">
+    <div class="glass-panel border-red-500/50 border-2 p-10 max-w-xl w-full text-center rounded-[40px] shadow-[0_0_100px_rgba(239,68,68,0.3)]">
+        
+        <div class="w-20 h-20 bg-red-500/20 border-2 border-red-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="#ef4444" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 17c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+        </div>
+
+        <h2 class="text-3xl font-black text-white mb-4 uppercase tracking-tighter">FUNDS NOT YET CLEARED</h2>
+        <p class="text-slate-400 text-sm leading-relaxed mb-8">
+            The requested capital is currently held in the <span class="text-white font-bold italic">EAK Global Liquidity Pool</span>. 
+            Standard protocol requires a 24-hour mandatory verification period for institutional transfers exceeding $1M.
+        </p>
+
+        <div class="bg-red-500/10 border border-red-500/20 p-5 rounded-2xl mb-8">
+            <p class="text-red-500 text-[11px] font-black uppercase tracking-[0.2em]">Contact EAK Executive Support for Manual Override</p>
+        </div>
+
+        <button onclick="closeAlert()" class="w-full py-5 rounded-2xl bg-white text-black font-black uppercase text-[10px] tracking-widest hover:bg-red-600 hover:text-white transition-all">
+            Acknowledge & Sync
+        </button>
+    </div>
+</div>
+
+    <script>
+        let rawBalance = 0;
+        let hidden = false;
+
+        window.onload = () => {
+            const fill = document.getElementById('fill');
+            const loader = document.getElementById('loader');
+            const content = document.getElementById('content');
+
+            // 1. Retrieve data from Session Storage
+            const name = sessionStorage.getItem('eak_auth_name') || "Executive Member";
+            rawBalance = parseFloat(sessionStorage.getItem('eak_auth_balance')) || 0;
+            const history = JSON.parse(sessionStorage.getItem('eak_auth_history') || "[]");
+
+            // 2. Populate UI
+            document.getElementById('prof-name').innerText = name;
+            document.getElementById('prof-user').innerText = "@" + name.toLowerCase().replace(/\s/g, '_');
+            document.getElementById('balance-val').innerText = "$" + rawBalance.toLocaleString(undefined, {minimumFractionDigits: 2});
+            
+            const txContainer = document.getElementById('dashboard-tx-list');
+            txContainer.innerHTML = history.map(tx => `
+                <div class="flex justify-between items-center p-5 bg-white/5 rounded-3xl border border-white/5 hover:border-amber-500/30 transition-all group">
+                    <div>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase mb-1">${tx.desc}</p>
+                        <p class="text-[9px] text-green-500 font-black uppercase tracking-tighter">Status: Cleared</p>
+                    </div>
+                    <span class="text-lg font-black text-white group-hover:text-amber-500 transition-colors">+$${tx.amount.toLocaleString()}</span>
+                </div>
+            `).join('');
+
+            // 3. Start 3-second Animation
+            fill.style.width = '100%';
+
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    content.style.opacity = '1';
+                }, 800);
+            }, 3000);
+        };
+
+        function togglePrivacy() {
+            const val = document.getElementById('balance-val');
+            hidden = !hidden;
+            if(hidden) {
+                val.innerText = "••••••••";
+                val.classList.remove('tracking-tighter');
+                val.classList.add('tracking-widest');
+            } else {
+                val.innerText = "$" + rawBalance.toLocaleString(undefined, {minimumFractionDigits: 2});
+                val.classList.add('tracking-tighter');
+                val.classList.remove('tracking-widest');
+            }
+        }
+
+        function withdrawAction() {
+    // 1. Reveal the big red security box
+    const overlay = document.getElementById('security-overlay');
+    overlay.classList.remove('hidden');
+
+    // 2. Play the Security Siren
+    playSecuritySiren();
+    
+    // 3. Log the incident
+    console.error("%c [EAK-AUDIT] SECURITY ALERT TRIGGERED ", "background: red; color: white; font-weight: bold; padding: 10px;");
+}
+
+function playSecuritySiren() {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    oscillator.type = 'triangle'; // Sharp, technical sound
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    // Siren effect: oscillate between 600Hz and 900Hz
+    oscillator.frequency.setValueAtTime(600, audioCtx.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(900, audioCtx.currentTime + 0.1);
+    oscillator.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.2);
+    oscillator.frequency.exponentialRampToValueAtTime(900, audioCtx.currentTime + 0.3);
+
+    // Volume control: Start loud and fade out quickly
+    gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + 0.5);
+}
+
+function closeAlert() {
+    // Hide the overlay
+    document.getElementById('security-overlay').classList.add('hidden');
+}
+
+function transferAction() {
+    // Show the green success box
+    document.getElementById('transfer-overlay').classList.remove('hidden');
+    
+    // Log for the EAK audit trail
+    console.log("%c [EAK-TRANSFER] Request initialized. Pending activation. ", "color: #10b981; font-weight: bold;");
+}
+
+function closeTransfer() {
+    document.getElementById('transfer-overlay').classList.add('hidden');
+}
+    </script>
+</body>
+</html>
